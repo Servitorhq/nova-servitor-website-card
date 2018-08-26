@@ -1,6 +1,6 @@
 {
     "name": "servitor/nova-servitor-monitor-card",
-    "description": "A Laravel Nova card.",
+    "description": "Simple card for Laravel Nova to show your website/monitor stats from Servitor.io",
     "keywords": [
         "laravel",
         "nova"
