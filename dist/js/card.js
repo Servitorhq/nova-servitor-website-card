@@ -1,1 +1,462 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:o})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){n(1),e.exports=n(6)},function(e,t,n){Nova.booting(function(e,t){e.config.devtools=!0,e.component("nova-servitor-monitor-card",n(2))})},function(e,t,n){var o=n(3)(n(4),n(5),!1,null,null,null);e.exports=o.exports},function(e,t){e.exports=function(e,t,n,o,r,s){var l,i=e=e||{},a=typeof e.default;"object"!==a&&"function"!==a||(l=e,i=e.default);var d,c="function"==typeof i?i.options:i;if(t&&(c.render=t.render,c.staticRenderFns=t.staticRenderFns,c._compiled=!0),n&&(c.functional=!0),r&&(c._scopeId=r),s?(d=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),o&&o.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(s)},c._ssrRegister=d):o&&(d=o),d){var u=c.functional,f=u?c.render:c.beforeCreate;u?(c._injectStyles=d,c.render=function(e,t){return d.call(t),f(e,t)}):c.beforeCreate=f?[].concat(f,d):[d]}return{esModule:l,exports:i,options:c}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={props:["card"],data:function(){return{loading:!0,monitorResponse:{}}},methods:{refresh:function(){var e=this;console.log(this.card),Nova.request().get("/nova-vendor/nova-servitor-monitor-card/servitor/monitor",{params:{monitorId:this.card.monitorId}}).then(function(t){e.loading=!1,e.monitorResponse=t.data.data})}},mounted:function(){this.refresh()}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("card",{staticClass:"card relative px-4 py-4 relative card-panel"},[n("h1",{staticClass:"text-center text-3xl text-80 font-light"},[e._v(e._s(e.monitorResponse.host))]),e._v(" "),e.loading?e._e():n("ul",{staticClass:"list-reset"},[n("li",{staticClass:"flex"},[n("strong",{staticClass:"flex-1"},[e._v("Online")]),e._v(" "),e.monitorResponse.is_online?n("label",{staticClass:"align-center text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"},[e._v("Yes")]):n("label",{staticClass:"align-center text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"},[e._v("No")])]),e._v(" "),n("li",{staticClass:"flex"},[n("strong",{staticClass:"flex-1"},[e._v("Valid SSL")]),e._v(" "),"VALID"===e.monitorResponse.has_valid_ssl?n("label",{staticClass:"text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"},[e._v("Yes")]):n("label",{staticClass:"text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"},[e._v("No")])]),e._v(" "),n("li",{staticClass:"flex"},[n("strong",{staticClass:"flex-1"},[e._v("Mixed contents")]),e._v(" "),e.monitorResponse.mixed_contents_count?n("label",{staticClass:"text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"},[e._v("Yes")]):n("label",{staticClass:"text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"},[e._v("No")])]),e._v(" "),n("li",{staticClass:"flex"},[n("strong",{staticClass:"flex-1"},[e._v("Broken links")]),e._v(" "),e.monitorResponse.broken_links_count?n("label",{staticClass:"text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"},[e._v("Yes")]):n("label",{staticClass:"text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"},[e._v("No")])])])])},staticRenderFns:[]}},function(e,t){}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1);
+module.exports = __webpack_require__(6);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Nova.booting(function (Vue, router) {
+    Vue.config.devtools = true;
+    Vue.component('nova-servitor-monitor-card', __webpack_require__(2));
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(4)
+/* template */
+var __vue_template__ = __webpack_require__(5)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Card.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b9bc2c0a", Component.options)
+  } else {
+    hotAPI.reload("data-v-b9bc2c0a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['card'],
+
+    data: function data() {
+        return {
+            loading: true,
+
+            monitorResponse: {}
+        };
+    },
+
+
+    methods: {
+        refresh: function refresh() {
+            var _this = this;
+
+            Nova.request().get('/nova-vendor/nova-servitor-monitor-card/servitor/monitor', {
+                params: {
+                    monitorId: this.card.monitorId
+                }
+            }).then(function (response) {
+                _this.loading = false;
+                _this.monitorResponse = response.data.data;
+            });
+        }
+    },
+
+    mounted: function mounted() {
+        this.refresh();
+    }
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "card",
+    { staticClass: "card relative px-4 py-4 relative card-panel" },
+    [
+      _c(
+        "a",
+        {
+          staticClass: "no-underline",
+          attrs: {
+            href: "https://servitor.io/admin/monitors/" + _vm.monitorResponse.id
+          }
+        },
+        [
+          _c(
+            "h1",
+            {
+              staticClass:
+                "text-center text-3xl text-80 font-light no-underline"
+            },
+            [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.monitorResponse.host) +
+                  "\n        "
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      !_vm.loading
+        ? _c("ul", { staticClass: "list-reset" }, [
+            _c("li", { staticClass: "flex" }, [
+              _c("strong", { staticClass: "flex-1" }, [_vm._v("Online")]),
+              _vm._v(" "),
+              _vm.monitorResponse.is_online
+                ? _c(
+                    "label",
+                    {
+                      staticClass:
+                        "align-center text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"
+                    },
+                    [_vm._v("Yes")]
+                  )
+                : _c(
+                    "label",
+                    {
+                      staticClass:
+                        "align-center text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"
+                    },
+                    [_vm._v("No")]
+                  )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "flex" }, [
+              _c("strong", { staticClass: "flex-1" }, [_vm._v("Valid SSL")]),
+              _vm._v(" "),
+              _vm.monitorResponse.has_valid_ssl === "VALID"
+                ? _c(
+                    "label",
+                    {
+                      staticClass:
+                        "text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"
+                    },
+                    [_vm._v("Yes")]
+                  )
+                : _c(
+                    "label",
+                    {
+                      staticClass:
+                        "text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"
+                    },
+                    [_vm._v("No")]
+                  )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "flex" }, [
+              _c("strong", { staticClass: "flex-1" }, [
+                _vm._v("Mixed contents")
+              ]),
+              _vm._v(" "),
+              !_vm.monitorResponse.mixed_contents_count
+                ? _c(
+                    "label",
+                    {
+                      staticClass:
+                        "text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"
+                    },
+                    [_vm._v("No")]
+                  )
+                : _c(
+                    "label",
+                    {
+                      staticClass:
+                        "text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"
+                    },
+                    [_vm._v("Yes")]
+                  )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "flex" }, [
+              _c("strong", { staticClass: "flex-1" }, [_vm._v("Broken links")]),
+              _vm._v(" "),
+              !_vm.monitorResponse.broken_links_count
+                ? _c(
+                    "label",
+                    {
+                      staticClass:
+                        "text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-success text-white"
+                    },
+                    [_vm._v("No")]
+                  )
+                : _c(
+                    "label",
+                    {
+                      staticClass:
+                        "text-xs font-semibold rounded-full px-4 leading-normal border border-purple bg-danger text-white"
+                    },
+                    [_vm._v("Yes")]
+                  )
+            ])
+          ])
+        : _vm._e()
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b9bc2c0a", module.exports)
+  }
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ]);

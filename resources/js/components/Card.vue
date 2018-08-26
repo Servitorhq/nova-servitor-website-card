@@ -1,7 +1,11 @@
 <template>
     <card class="card relative px-4 py-4 relative card-panel">
 
-            <h1 class="text-center text-3xl text-80 font-light">{{ monitorResponse.host }}</h1>
+        <a :href="'https://servitor.io/admin/monitors/'+monitorResponse.id" class="no-underline">
+            <h1 class="text-center text-3xl text-80 font-light no-underline">
+                {{ monitorResponse.host }}
+            </h1>
+        </a>
             <ul class="list-reset" v-if="!loading">
                 <li class="flex">
                     <strong class="flex-1">Online</strong>
@@ -41,7 +45,6 @@ export default {
 
     methods: {
         refresh() {
-            console.log(this.card);
             Nova.request().get('/nova-vendor/nova-servitor-monitor-card/servitor/monitor', {
                 params: {
                     monitorId: this.card.monitorId,
