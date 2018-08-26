@@ -4,10 +4,18 @@
  ![Servitor Website Card](https://raw.githubusercontent.com/Servitorhq/nova-servitor-website-card/master/screenshot.png)
  
  ### Installation
- First you shoudl require this package in your composer.json file, you can do this be executing the following command:
+ First you should require this package in your composer.json file, you can do this be executing the following command:
  ```
 composer require servitorhq/nova-servitor-monitor-card
  ```
+ 
+ After that you should add the following details to your `config/services.php` file:
+ ```php
+  'nova_servitor_cards' => [
+         'api_key'   => env('SERVITOR_API_KEY'),
+     ],
+ ```
+ And finally, add the `SERVITOR_API_KEY` value to your `.env` file. Your api key can be found [here](https://servitor.io/admin/profile).
  
  ### Usage
  After that you need to add the card in either your `NovaServiceProvider.php` file or a resource. To show it on your dashboard you should add it to your service provider like so:
