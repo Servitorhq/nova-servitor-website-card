@@ -24,6 +24,7 @@ class CardServiceProvider extends ServiceProvider
             Nova::script('nova-servitor-monitor-card', __DIR__.'/../dist/js/card.js');
             Nova::style('nova-servitor-monitor-card', __DIR__.'/../dist/css/card.css');
         });
+
     }
 
     /**
